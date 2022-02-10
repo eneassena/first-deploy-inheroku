@@ -13,10 +13,10 @@ const AuthProviderContext = (props) => {
         let auth = fakeAuthenticated(credencias);
         if (auth) {
             setUser(credencias);
-            return;
+            return true;
         } else {
             setUser(null);
-            return;
+            return "Credenciais Invalida!";
         }
     }
 

@@ -31,6 +31,7 @@ const App = () => {
               <About />
             </RequireAuth>
           } />
+          <Route path={'*'} element={<h1>Not Found 404</h1>} />
         </Route>
       </Routes>
     </div>

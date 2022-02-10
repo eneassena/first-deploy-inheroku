@@ -8,13 +8,13 @@ const RequireAuth = ({ children }) => {
     const auth = useAuthContext();
 
     function loginUser(c) {
-        auth.signin(c);
+        let response = auth.signin(c);
+        return response === true ? 'Login Realizado com sucesso' : response;
     }
 
     function logout() {
         auth.signout();
     }
-
 
     if (!auth.user) {
         return <LoginPage login={loginUser} />;

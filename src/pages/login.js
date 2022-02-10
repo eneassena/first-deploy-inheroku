@@ -1,9 +1,11 @@
 import React from 'react';
+import './globals.css';
 
 
 const LoginPage = (props) => {
     const [login, setLogin] = React.useState(''),
         [password, setPassword] = React.useState('');
+    const [message, setMessage] = React.useState('');
 
 
 
@@ -14,13 +16,18 @@ const LoginPage = (props) => {
         if (!login || !password) {
             alert('Credencias invalidas');
         } else {
-            props.login({ login, password });
+            let response = props.login({ login, password });
+            setMessage(response === true ? 'Login Realizado com sucesso' : response);
         }
     }
 
 
     return (
         <>
+            <section className="error-message">
+                {message}
+            </section>
+            <hr />
             <form onSubmit={handleSubmit}>
                 <p>Login: <input
                     value={login}
