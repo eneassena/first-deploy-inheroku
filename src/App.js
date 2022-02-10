@@ -2,40 +2,37 @@ import React from "react";
 import {
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 import Home from './pages/index';
 import About from './pages/about';
 import LoginPage from './pages/login';
 import RequireAuth from "./services/RequireAuth";
-
+import Contato from "./pages/contato";
+import Layout from './pages/Layout';
+import { Logout } from "./pages/Logout";
 
 
 const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/about" element={
-          <RequireAuth>
-            <About />
-          </RequireAuth>
-        } />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/contato" element={
+            <RequireAuth>
+              <Contato />
+            </RequireAuth>
+          } />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/about" element={
+            <RequireAuth>
+              <About />
+            </RequireAuth>
+          } />
+        </Route>
       </Routes>
-
-      <hr />
-
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-
     </div>
   );
 }
